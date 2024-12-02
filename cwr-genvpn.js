@@ -48,7 +48,7 @@ $(document).ready(function () {
                 }),
                 xhrFields: { responseType: 'blob' },
                 success: function (blob) {
-                    downloadFile(blob, `cwr-${userId}-.guidem`);
+                    downloadFile(blob, `cwr-${userId}.guidem`);
                     $('#loadingIcon').hide();
                     clickedButton.prop('disabled', false).text('Successful! Please Connect to CWR!');
                     isDownloading = false;
