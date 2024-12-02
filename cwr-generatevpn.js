@@ -61,7 +61,7 @@ $(document).ready(function () {
 
             waitTimers.push(setTimeout(() => {
                 clickedButton.text('Please wait...');
-            }, 15000));
+            }, 10000));
 
             waitTimers.push(setTimeout(() => {
                 clickedButton.text('Almost there...');
@@ -69,7 +69,7 @@ $(document).ready(function () {
 
             waitTimers.push(setTimeout(() => {
                 clickedButton.text('This may take around 2-3 minutes...');
-            }, 45000));
+            }, 55000));
 
             $.ajax({
                 url: 'https://sb1.guidem.ph/generate-vpn',
@@ -83,7 +83,7 @@ $(document).ready(function () {
                 }),
                 xhrFields: { responseType: 'blob' },
                 success: function (blob) {
-                    downloadFile(blob, `cwr-${userId}-.guidem`);
+                    downloadFile(blob, `cwr-${userId}.guidem`);
                     downloadCount++;
                     $('#loadingIcon').hide();
                     clickedButton.prop('disabled', true)
@@ -103,8 +103,8 @@ $(document).ready(function () {
                 error: function () {
                     retryCount++;
                     if (retryCount <= maxRetries) {
-                        clickedButton.text(`Retrying (${retryCount}/${maxRetries}) in 60s...`);
-                        setTimeout(genvpn, 60000);
+                        clickedButton.text(`Retrying (${retryCount}/${maxRetries}) in 30s...`);
+                        setTimeout(genvpn, 30000);
                     } else {
                         $('#status').text('Failed to generate VPN after multiple attempts. Please try again later.').show();
                         $('#loadingIcon').hide();
